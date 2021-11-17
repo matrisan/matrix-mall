@@ -1,4 +1,4 @@
-GET http://localhost:8080/matrix/mall/123
+GET {{host}}/matrix/mall/123
 Accept: application/json
 
 ###

@@ -15,6 +15,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface IOrderMainEntityRepository extends JpaRepository<OrderMainEntity, Long> {
 
+    <T>  T findById(long orderId, Class<T> clz);
+
     <T> Page<T> findByUserId(long userId, Pageable pageable, Class<T> clz);
 
 }

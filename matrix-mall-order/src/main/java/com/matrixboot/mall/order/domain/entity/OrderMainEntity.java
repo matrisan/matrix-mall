@@ -14,6 +14,8 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -48,6 +50,8 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 @Table(name = "order_main", indexes = {@Index(name = "idx_user_id", columnList = "user_id")})
+@DynamicUpdate
+@DynamicInsert
 public class OrderMainEntity extends BaseEntity {
 
     private static final long serialVersionUID = -4124957277985601646L;
@@ -103,7 +107,7 @@ public class OrderMainEntity extends BaseEntity {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
-    List<OrderDetailEntity> orderDetails;
+    private List<OrderDetailEntity> orderDetails;
 
     /**
      * 订单没有过期
